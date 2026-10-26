@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-wjRf4ZLFNXV+c21hW5Rrnz9zcJXyUdBVBHVjcOlrtks='; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Відкрити в Claude</title>
+<style>body{font:16px/1.5 -apple-system,system-ui,sans-serif;margin:0;padding:48px 16px;text-align:center;background:#faf9f7;color:#222}a{color:#c15f3c}@media(prefers-color-scheme:dark){body{background:#1f1e1c;color:#eee}a{color:#e8916d}}</style>
+</head>
+<body>
+<p id="m">Посилання не задане.</p>
+<p><a id="a" hidden>Відкрити вручну</a></p>
+<script>var id = new URLSearchParams(location.search).get("s") || "";
+var msg = document.getElementById("m");
+if (/^local_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(id)) {
+  var url = "claude://claude.ai/epitaxy/" + id;
+  var a = document.getElementById("a");
+  a.href = url; a.hidden = false;
+  msg.textContent = "Відкриваю сесію в Claude…";
+  location.replace(url);
+} else {
+  msg.textContent = "Невірне посилання.";
+}</script>
+</body>
+</html>
